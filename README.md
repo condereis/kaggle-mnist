@@ -8,7 +8,7 @@ Solutions for Kaggle's Digit Recognizer competition.
 > The data for this competition were taken from the MNIST dataset. The MNIST ("Modified National Institute of Standards and Technology") dataset is a classic within the Machine Learning community that has been extensively studied. More detail about the dataset, including Machine Learning algorithms that have been tried on it and their levels of success, can be found at http://yann.lecun.com/exdb/mnist/index.html.
 
 
-* Documentation: 
+For further information check the [documentation](http://kaggle-mnist.readthedocs.io/en/latest/). 
 
 
 System Specs
@@ -26,17 +26,17 @@ Requirements
 
 General Requirements:
 
-    * Numpy
-    * Pandas
-    * TensorFlow
-    * Click
+* Numpy
+* Pandas
+* TensorFlow
+* Click
 
 Notebook requirements:
 
-    * Jupyter
-    * Matplotlib
+* Jupyter
+* Matplotlib
 
-Check [here]() for information on how to set up the enviroment 
+Check [here](http://kaggle-mnist.readthedocs.io/en/latest/getting-started.html) for information on how to set up the enviroment 
 
 
 Data Preparation
@@ -49,10 +49,6 @@ Download train and test data and edit SETTINGS.json or run:
 
 Training
 --------
-
-Download training data and edit SETTINGS.json or run:
-
-    $ make data
 
 To train a model just run:
 
