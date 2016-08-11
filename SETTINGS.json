@@ -1,0 +1,8 @@
+{
+	"TRAIN_DATA_URL":"https://www.kaggle.com/c/digit-recognizer/download/train.csv",
+	"TEST_DATA_URL":"https://www.kaggle.com/c/digit-recognizer/download/test.csv",
+	"TRAIN_DATA_PATH":"data/raw/train.csv",
+	"TEST_DATA_PATH":"data/raw/test.csv",
+	"MODEL_PATH":"models/",
+	"SUBMISSION_PATH":"submissions/"
+}
