@@ -5,13 +5,15 @@ import os
 import pandas as pd
 import sys
 import tensorflow as tf
-    
+
+import logreg
+import convnn
+
 
 @click.command()
-def main():
-    #############
-    # LOAD DATA #
-    #############
+@click.option('--model', type=click.Choice(['logreg', 'convnn']), default='convnn')
+def main(model):
+    # Load data
     project_dir = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir)
     settings = json.loads(
         open(os.path.join(project_dir, 'SETTINGS.json')).read()
@@ -20,36 +22,12 @@ def main():
     test_path = os.path.join(project_dir, settings['TEST_DATA_PATH'])
     test_data = pd.read_csv(test_path)
 
-    ###########################
-    # CREATE OPERATIONS GRAPH #
-    ###########################
-    # input tensor
-    x = tf.placeholder(tf.float32, [None, 784])
+    # Run training
+    if model == 'logreg':
+        logreg.run(None, test_data, False, True)
+    else:
+        convnn.run(None, test_data, False, True)
 
-    # weights (w) and biases (s) 
-    W = tf.Variable(tf.zeros([784, 10]))
-    b = tf.Variable(tf.zeros([10]))
-
-    # model output (y)
-    y = tf.nn.softmax(tf.matmul(x, W) + b)
-
-    ######################
-    # LOAD AND RUN MODEL #
-    ######################
-    saver = tf.train.Saver()
-    with tf.Session() as sess:
-        # Restore variables from disk.
-        model_path = os.path.join(project_dir, settings['MODEL_PATH'],
-                                  "logistic_regression.ckpt")
-        saver.restore(sess, model_path)
-        predict = sess.run(y, feed_dict={x: test_data.as_matrix() / 255.0})
-
-    pred = [[i + 1, np.argmax(one_hot_list)] for
-            i, one_hot_list in enumerate(predict)]
-    submission = pd.DataFrame(pred, columns=['ImageId', 'Label'])
-    submission_path = os.path.join(project_dir, settings['SUBMISSION_PATH'],
-                                   'logistic_regression.csv')
-    submission.to_csv(submission_path, index=False)
 
 if __name__ == '__main__':
     main()

@@ -1,2 +1,2 @@
-model_checkpoint_path: "logistic_regression.ckpt"
-all_model_checkpoint_paths: "logistic_regression.ckpt"
+model_checkpoint_path: "/home/rafael/Dropbox/projects/kaggle-mnist/src/models/../../models/conv_nn.ckpt"
+all_model_checkpoint_paths: "/home/rafael/Dropbox/projects/kaggle-mnist/src/models/../../models/conv_nn.ckpt"
